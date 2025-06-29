@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Mashup</title>
+</head>
+<body>
+  <h1>Olá <%= user ? user.username : "Visitante" %></h1>
+
+  <% if (user) { %>
+    <form action="/api/search" method="POST">
+      <input type="text" name="term" placeholder="Pesquisar cidade, artista, etc.">
+      <button type="submit">Pesquisar</button>
+    </form>
+    <p><a href="/logout">Logout</a></p>
+  <% } else { %>
+    <p><a href="/login">Login</a> | <a href="/register">Registar</a></p>
+  <% } %>
+</body>
+</html>

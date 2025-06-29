@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2em; background: #f9f9f9; }
+    h1, h2, h3 { color: #222; }
+    img { max-width: 200px; display: block; }
+    .article { border-bottom: 1px solid #ccc; padding: 1em 0; margin-bottom: 1em; }
+  </style>
+</head>
+<body>
+
+<h1>Resultados para: <%= term %></h1>
+
+<% if (weather) { %>
+  <h2>Clima</h2>
+  <img src="http://openweathermap.org/img/w/<%= weather.weather[0].icon %>.png" alt="ícone do clima" />
+  <p><%= weather.main.temp %>°C</p>
+  <p><%= weather.weather[0].description %></p>
+<% } %>
+
+<% if (news && news.length > 0) { %>
+  <h2>Notícias relacionadas</h2>
+  <% news.forEach(article => { %>
+    <div class="article">
+      <% if (article.urlToImage) { %>
+        <img src="<%= article.urlToImage %>" alt="Imagem da notícia" />
+      <% } %>
+      <h3><%= article.title %></h3>
+      <p><%= article.description %></p>
+      <a href="<%= article.url %>" target="_blank">Ler mais</a>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>Nenhuma notícia encontrada.</p>
+<% } %>
+
+</body>
+</html>

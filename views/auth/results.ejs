@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultados da Pesquisa</title>
+</head>
+<body>
+  <h1>Resultados para "<%= weather.name %>"</h1>
+
+  <h2>Clima Atual</h2>
+  <p>Temperatura: <%= weather.main.temp %>°C</p>
+  <p>Condições: <%= weather.weather[0].description %></p>
+
+  <h2>Notícias Relacionadas</h2>
+  <ul>
+    <% news.forEach(article => { %>
+      <li>
+        <a href="<%= article.url %>" target="_blank"><%= article.title %></a>
+      </li>
+    <% }) %>
+  </ul>
+
+  <p><a href="/">Fazer nova pesquisa</a></p>
+</body>
+</html>
